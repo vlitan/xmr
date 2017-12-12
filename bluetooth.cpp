@@ -2,6 +2,7 @@
 #include "pinConfig.h"
 #include "bluetooth.h"
 #include "motors.h"
+#include "sysConfig.h"
 
 char data = 0, lastData = '.';            //Variable for storing received data
 SoftwareSerial BLT(serialRX,serialTX); //to TX, to RX
@@ -19,17 +20,23 @@ void loopBLT()
       if(data!=lastData){
         lastData=data;
         switch(lastData){
-          case 'F': drive(100); break; //go forward
-          case 'B': drive(-100); break; //backward
-          case 'L': turn(-100); break; //left
-          case 'R': turn(100); break; //right
-          case 'G': go(50,100); break; //forward left
-          case 'I': go(100,50); break; //forward right
-          case 'H': go(-50,-100); break; //back left
-          case 'J': go(-100, -50); break; //back right
+          case 'F': drive(speed); break; //go forward
+          case 'B': drive(-speed); break; //backward
+          case 'L': turn(-speed); break; //left
+          case 'R': turn(speed); break; //right
+          case 'G': go(speed/2,speed); break; //forward left
+          case 'I': go(speed,speed/2); break; //forward right
+          case 'H': go(-speed/2,-speed); break; //back left
+          case 'J': go(-speed, -speed/2); break; //back right
           case 'S': stop(); break; //stop
-          case 'D': stop(); break; //stop all   
-          //default: if char     
+          case 'D': stop(); break; //stop all  
+          case 'V': digitalWrite(buzzerPin,HIGH); break;
+          case 'v': digitalWrite(buzzerPin,LOW); break; 
+          default: if(lastData>='0' && lastData <='9'){
+                        speed=map(lastData-'0',0,9,minSpeed,maxSpeed);
+                    }
+                   break;
+          
         }
       }
    }

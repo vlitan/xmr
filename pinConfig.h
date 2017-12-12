@@ -13,3 +13,5 @@ const int echoPin = 2;
 
 const int serialRX = A4;
 const int serialTX = A5;
+
+const int buzzerPin = A3;
