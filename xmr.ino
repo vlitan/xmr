@@ -4,6 +4,7 @@
 #include <Servo.h>
 #include <NewPing.h>
 #include "modeSelector.h"
+#include "bluetooth.h"
 
 Servo servo;
 NewPing sonar(triggerPin, echoPin, maxDistance);
@@ -13,6 +14,8 @@ void setup() {
   setupModeSelector();
   servo.attach(servoPin);
   Serial.begin(115200);
+  setupBLT();
+
 }
 int i = 2;
 int inc = 1;
@@ -28,15 +31,20 @@ void loop() {
 
 
 void testLoop(){
-    drive(255);
+    /*drive(255);
     if ((i <= 1) || (i >= 179)){
       inc *= -1;
     }
     i += inc;
     servo.write(i);
     Serial.println(sonar.ping_cm());
+<<<<<<< HEAD
     delay(5);
 }
+    delay(5);*/
+    loopBLT();
+ }
+
 
 void ultraDetectAvoid(){
   digitalWrite(13,1);
