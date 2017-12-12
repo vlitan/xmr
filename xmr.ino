@@ -5,6 +5,7 @@
 #include <NewPing.h>
 #include "modeSelector.h"
 #include "bluetooth.h"
+#include "avoid.h"
 
 Servo servo;
 NewPing sonar(triggerPin, echoPin, maxDistance);
