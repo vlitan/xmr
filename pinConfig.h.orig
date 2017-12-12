@@ -11,7 +11,10 @@ const int servoPin = 8;
 const int triggerPin = 12;
 const int echoPin = 2;
 
+<<<<<<< HEAD
 const int switch1 = 7;
-const int switch2 = 4;
+const int switch2 = 9;
+=======
 const int serialRX = A4;
 const int serialTX = A5;
+>>>>>>> 986dc0b01fd10480e2e0e573b7e3d77bc6fcf148
