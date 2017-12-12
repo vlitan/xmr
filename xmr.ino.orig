@@ -3,8 +3,11 @@
 #include "sysConfig.h"
 #include <Servo.h>
 #include <NewPing.h>
+<<<<<<< HEAD
 #include "modeSelector.h"
+=======
 #include "bluetooth.h"
+>>>>>>> 986dc0b01fd10480e2e0e573b7e3d77bc6fcf148
 
 Servo servo;
 NewPing sonar(triggerPin, echoPin, maxDistance);
@@ -15,32 +18,42 @@ void setup() {
   servo.attach(servoPin);
   Serial.begin(115200);
   setupBLT();
+
 }
 int i = 2;
 int inc = 1;
 
 void loop() {
+<<<<<<< HEAD
   switch(getMode()){
-    case bluetooth:     loopBLT(); Serial.println("blue"); break;
-    case hardwareTest:  loopTest();  Serial.println("hard"); break;
+    case bluetooth:     Serial.println("blue"); break;
+    case hardwareTest:  Serial.println("hard"); break;
     case obstacleAvoid: Serial.println("avoi"); break;
     case mapRoom:       Serial.println("mapr"); break;
   }
 }
 
 
-void loopTest(){
+void testLoop(){
     drive(255);
+=======
+    /*drive(255);
+>>>>>>> 986dc0b01fd10480e2e0e573b7e3d77bc6fcf148
     if ((i <= 1) || (i >= 179)){
       inc *= -1;
     }
     i += inc;
     servo.write(i);
-    //Serial.println(sonar.ping_cm());
+    Serial.println(sonar.ping_cm());
+<<<<<<< HEAD
     delay(5);
-    stop();
+}
+=======
+    delay(5);*/
+    loopBLT();
  }
 
+>>>>>>> 986dc0b01fd10480e2e0e573b7e3d77bc6fcf148
 
 void ultraDetectAvoid(){
   digitalWrite(13,1);
