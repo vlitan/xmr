@@ -1,3 +1,4 @@
+#if 0
 #include <SoftwareSerial.h>
 
 char data = 0;            //Variable for storing received data
@@ -18,3 +19,4 @@ void loop()
       Serial.print("\n");        
    }
 }
+#endif
