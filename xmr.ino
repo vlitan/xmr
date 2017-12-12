@@ -3,12 +3,14 @@
 #include "sysConfig.h"
 #include <Servo.h>
 #include <NewPing.h>
+#include "modeSelector.h"
 
 Servo servo;
 NewPing sonar(triggerPin, echoPin, maxDistance);
 
 void setup() {
   setupMotors();
+  setupModeSelector();
   servo.attach(servoPin);
   Serial.begin(115200);
 }
@@ -16,6 +18,16 @@ int i = 2;
 int inc = 1;
 
 void loop() {
+  switch(getMode()){
+    case bluetooth:     Serial.println("blue"); break;
+    case hardwareTest:  Serial.println("hard"); break;
+    case obstacleAvoid: Serial.println("avoi"); break;
+    case mapRoom:       Serial.println("mapr"); break;
+  }
+}
+
+
+void testLoop(){
     drive(255);
     if ((i <= 1) || (i >= 179)){
       inc *= -1;
@@ -24,8 +36,7 @@ void loop() {
     servo.write(i);
     Serial.println(sonar.ping_cm());
     delay(5);
- }
-
+}
 
 void ultraDetectAvoid(){
   digitalWrite(13,1);
