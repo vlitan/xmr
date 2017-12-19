@@ -40,6 +40,13 @@ void drive(int speed){
 void turn(int speed){
   go(speed, -speed);
 }
+
+void turn(int speed, int delayed){
+  turn(speed);
+  delay(delayed);
+  stop();
+}
+
 //stops motors
 void stop(){
   go(0, 0);

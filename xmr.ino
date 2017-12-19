@@ -14,19 +14,22 @@ void setup() {
   setupMotors();
   setupModeSelector();
   servo.attach(servoPin);
-  Serial.begin(115200);
-  setupBLT();
+ // Serial.begin(9600);
+//  setupBLT();
+  setupAvoid();
 }
 int i = 2;
 int inc = 1;
 
 void loop() {
-  switch(getMode()){
+  /*switch(getMode()){
     case bluetooth:     loopBLT(); Serial.println("blue"); break;
     case hardwareTest:  loopTest();  Serial.println("hard"); break;
     case obstacleAvoid: Serial.println("avoi"); break;
     case mapRoom:       Serial.println("mapr"); break;
-  }
+  }*/
+  loopAvoid();
+  //loopTest();
 }
 
 
@@ -36,8 +39,8 @@ void loopTest(){
       inc *= -1;
     }
     i += inc;
-    servo.write(i);
-    //Serial.println(sonar.ping_cm());
+    servo.write(lookFront);
+    Serial.println(sonar.ping_cm());
     delay(5);
     stop();
  }

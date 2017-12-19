@@ -11,5 +11,6 @@ void go(int speedLeft, int speedRight);
 void drive(int speed);
 
 void turn(int speed);
+void turn(int speed, int delayed);
 //stops motors
 void stop();
