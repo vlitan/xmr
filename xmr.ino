@@ -15,25 +15,23 @@ void setup() {
   setupModeSelector();
   servo.attach(servoPin);
  // Serial.begin(9600);
-//  setupBLT();
+  setupBLT();
   setupAvoid();
 }
-int i = 2;
-int inc = 1;
+
 
 void loop() {
-  /*switch(getMode()){
-    case bluetooth:     loopBLT(); Serial.println("blue"); break;
-    case hardwareTest:  loopTest();  Serial.println("hard"); break;
-    case obstacleAvoid: Serial.println("avoi"); break;
-    case mapRoom:       Serial.println("mapr"); break;
-  }*/
-  loopAvoid();
-  //loopTest();
+  switch(getMode()){
+    case bluetooth:       loopBLT();  break;
+    case hardwareTest:    loopTest();  break;
+    case obstacleAvoid:   loopAvoid(AVOID); break;
+    case obstacleFollow:  loopAvoid(FOLLOW); break;
+  }
 }
 
-
 void loopTest(){
+    static int i = 2;
+    static int inc = 1;
     drive(255);
     if ((i <= 1) || (i >= 179)){
       inc *= -1;
@@ -43,22 +41,4 @@ void loopTest(){
     Serial.println(sonar.ping_cm());
     delay(5);
     stop();
- }
-
-
-void ultraDetectAvoid(){
-  digitalWrite(13,1);
-  int dist=sonar.ping_cm();
-  Serial.println(dist);
-  int sped=100;
-  drive(100);
-  if(dist<20 && dist!=0){
-    digitalWrite(13,0);
-    stop();
-    delay(100);
-    turn(100);
-    delay(100);
-  }
 }
-
-

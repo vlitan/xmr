@@ -13,7 +13,7 @@ mode_t  getMode(){
     case 0 : return hardwareTest;
     case 1 : return bluetooth;
     case 2 : return obstacleAvoid;
-    case 3 : return mapRoom;
+    case 3 : return obstacleFollow;
   }
   return 0;
 }

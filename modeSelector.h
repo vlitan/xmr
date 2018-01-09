@@ -4,7 +4,7 @@ typedef enum mode_e{
   bluetooth,
   hardwareTest,
   obstacleAvoid,
-  mapRoom
+  obstacleFollow
 } mode_t;
 
 void    setupModeSelector();
