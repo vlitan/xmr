@@ -9,4 +9,5 @@ const int lookLeft = 180;
 const int lookRight = 0;
 const int lookFront = 90;
 const int minDist = 20;
-const int turnDelay = 1000;
+const int turnDelay = 430;
+const int nrReads = 10;
