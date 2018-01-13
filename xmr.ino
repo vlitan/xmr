@@ -37,7 +37,7 @@ void loopTest(){
       inc *= -1;
     }
     i += inc;
-    servo.write(lookFront);
+    servo.write(i);
     Serial.println(sonar.ping_cm());
     delay(5);
     stop();
