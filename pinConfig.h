@@ -1,6 +1,6 @@
 #pragma once
 #include <Arduino.h>
-
+//this file holds all pin declarations
 const int leftMotorPinA = 5; 
 const int leftMotorPinB = 6;
 const int rightMotorPinA = 3;
